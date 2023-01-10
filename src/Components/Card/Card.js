@@ -1,34 +1,65 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
+import PropTypes from 'prop-types';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+import BaseButton from '../Button/Button';
 import Typography from '@mui/material/Typography';
+import CardImage from '../../assets/images/card.jpg';
+import SkeletonLoader from '../SkeletonLoader/SkeletonLoader';
 
-function ImgMediaCard() {
+const ImgMediaCard = (props) => {
+  const { loading = false } = props;
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
-      />
+      {loading ? (
+          <SkeletonLoader animation="wave" variant="rounded" width="100%" height={200} />
+      ) : (
+        <CardMedia
+          component="img"
+          alt="green iguana"
+          height="200"
+          image={CardImage}
+        />
+      )}
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
+        {loading ? (
+          <SkeletonLoader animation="wave" variant="text" width={200} height={20} />
+        ) : (
+          <Typography gutterBottom variant="h5" component="div">
+            Lizard
+          </Typography>
+        )}
+        {loading ? (
+          <>
+            <SkeletonLoader animation="wave" variant="text"  width="100%" height={20} />
+            <SkeletonLoader animation="wave" variant="text"  width="100%" height={20} />
+            <SkeletonLoader animation="wave" variant="text"  width="100%" height={20} />
+          </>
+        ) : (
+          <Typography variant="body2" color="text.secondary">
+            Lizards are a widespread group of squamate reptiles, with over 6,000
+            species, ranging across all continents except Antarctica
+          </Typography>
+        )}
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+        {loading ? (
+          <SkeletonLoader animation="wave" variant="text" width={70} height={40} />
+        ) : (
+        <BaseButton variant="text" value="Share"/>
+        )}
+        {loading ? (
+          <SkeletonLoader animation="wave" variant="text" width={70} height={40} />
+        ) : (
+          <BaseButton variant="text" value="Learn More"/>
+        )}
+        </CardActions>
     </Card>
   );
 }
+ImgMediaCard.propTypes = {
+  loading: PropTypes.bool,
+};
 export default ImgMediaCard;

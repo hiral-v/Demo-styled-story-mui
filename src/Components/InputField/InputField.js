@@ -1,7 +1,6 @@
 import React from 'react';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-import InputLabelField from '../InputLabelField/InputLabelField';
 
 interface Props {
   placeholder?: string;

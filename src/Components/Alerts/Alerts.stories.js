@@ -10,7 +10,7 @@ export default {
         severity: {
           options: ['error', 'warning', 'info', 'success'],
           control: {
-            type: 'inline-radio'
+            type: 'select'
           }
         },
         value: {
@@ -30,8 +30,3 @@ export default {
 const Template: Story<AlertProps> = (args) => <BasicAlerts {...args}/>
 
 export const Default = Template.bind({});
-
-// export const Error = () => <BasicAlerts severity="error" value="This is an error alert — check it out!"/>
-// export const Warning = () => <BasicAlerts severity="warning" value="This is a warning alert — check it out!" />
-// export const Info = () => <BasicAlerts severity="info"  value="This is an info alert — check it out!" />
-// export const Success = () => <BasicAlerts severity="success" value="This is a success alert — check it out!" />

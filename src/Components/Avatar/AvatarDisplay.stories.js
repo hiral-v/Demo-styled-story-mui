@@ -33,5 +33,7 @@ export default {
     }
 }
 const Template: Story<AvatarProps> = (args) => <AvatarDisplay {...args}></AvatarDisplay>
+const TemplateLoading: Story<AvatarProps> = (args) => <AvatarDisplay {...args} loading></AvatarDisplay>
 
 export const Default = Template.bind({});
+export const Loading = TemplateLoading.bind({});

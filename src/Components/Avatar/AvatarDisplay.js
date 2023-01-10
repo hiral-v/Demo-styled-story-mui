@@ -1,28 +1,25 @@
 import React from 'react';
-import Avatar from '@mui/material/Avatar';
-// import { makeStyles } from '@material-ui/core/styles';
-// const useStyles = makeStyles((theme) => ({
-//   smallAvatar: {
-//     height: '24px',
-//     width: "24px",
-//   },
-//   defaultAvatar: {
-//     height: '40px',
-//     width: "40px",
-//   },
-//   largeAvatar: {
-//     height: '56px',
-//     width: "56px",
-//   },
-// }));
-
-const AvatarDisplay = ({ variant, value, src, size, stringAvatar, ...rest }: Props) => {
-  // const className = useStyles();
+import Avatar, { AvatarProps } from '@mui/material/Avatar';
+import PropTypes from 'prop-types';
+import SkeletonLoader from '../SkeletonLoader/SkeletonLoader';
+interface Props extends AvatarProps {
+  variant?: string;
+}
+const AvatarDisplay = ({ loading = false, variant, value, src, size, stringAvatar, ...rest }: Props) => {
+ 
   return (
-    <Avatar variant={variant} size={size} src={src}>{value}</Avatar>
+    <>
+      {loading ? (
+        <SkeletonLoader animation="wave" variant={variant} height={40} width={40} />
+      ) : (
+        <Avatar variant={variant} size={size} src={src}>{value}</Avatar>
+      )}
+    </>
   )
 }
-
+AvatarDisplay.propTypes = {
+  loading: PropTypes.bool,
+};
 export default AvatarDisplay
 
 
