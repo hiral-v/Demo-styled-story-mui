@@ -1,6 +1,13 @@
 import React from 'react';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
+import { styled } from '@mui/system';
+
+const MuiTextField = styled(TextField)({
+  '& .MuiInputBase-input': {
+    padding: '9px 14px',
+  }
+})
 
 interface Props {
   placeholder?: string;
@@ -31,14 +38,14 @@ const InputField: React.FC<Props> = React.forwardRef(
     ) => {
       return (
         <FormControl>
-            <TextField
+            <MuiTextField
               className="input-field"
               placeholder={placeholder}
               variant={variant}
               value={value}
               fullWidth={fullWidth}
               label={label}
-              multiline
+              multiline={multiline}
               rows={rows}
               type={type}
               error={error}

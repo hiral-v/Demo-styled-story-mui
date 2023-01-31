@@ -1,17 +1,147 @@
 
-import { amber, deepOrange, grey, blue, common } from '@mui/material/colors';
+import {  common } from '@mui/material/colors';
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 
-const palette = {
+const breakpoints = createBreakpoints({});
+
+export const colorPalette = {
+  primary: {
+    main: '#00203FFF',
+    light: '#B1DED3',
+    dark: '#00765A',
+  },
   light: {
-    primary: {
-      main: '#00203FFF',
-      light: '#B1DED3',
-      dark: '#00765A',
+    secondary: {
+      main: '#000',
     },
   },
+  dark: {
+    secondary: {
+      main: '#FFF',
+    },
+  },
+  error: '#FF1F1F',
+  success: '#52C41A',
+  info: '#00249C',
 };
 
-// export const theme = createTheme({
+export const getThemedComponents = (mode) => ({
+  palette: {
+    mode,
+    colorPalette
+  },
+  components: {
+    ...(mode === 'light'
+      ? {
+        MuiButton: {
+          styleOverrides: {
+            root: {
+              borderRadius: '4px',
+              color: common.white,
+              borderWidth: 2,
+              '&:hover': {
+                borderWidth: 2,
+              },
+            },
+          },
+          variants: [
+            {
+              props: { variant: 'contained' },
+              style: {
+                backgroundColor: colorPalette.primary.main,
+              },
+            },
+            {
+              props: { variant: 'outlined' },
+              style: {
+                color: colorPalette.primary.main,
+              },
+            },
+            {
+              props: { variant: 'primary', color: 'primary' },
+              style: {
+                border: '4px dashed blue',
+              },
+            },
+          ],
+        },
+      }
+    : {
+        MuiButton: {
+          styleOverrides: {
+            root: {
+              borderRadius: '4px',
+              color: common.white,
+              borderWidth: 2,
+              '&:hover': {
+                borderWidth: 2,
+              },
+            },
+          },
+          variants: [
+            {
+              props: { variant: 'contained' },
+              style: {
+                backgroundColor: colorPalette.primary.main,
+              },
+            },
+            {
+              props: { variant: 'outlined' },
+              style: {
+                color: colorPalette.primary.main,
+              },
+            },
+          ],
+        },
+        MuiCssBaseline: {
+          styleOverrides: {
+            body: {
+              backgroundColor: '#121212',
+            }
+          }
+        }
+      }),
+  },
+  
+  typography: {
+    allVariants: {
+      fontFamily: `"Roboto", sans-serif`,
+    },
+    h2: {
+      fontSize: '41px',
+      lineHeight: '48px',
+      fontWeight: 700,
+      [breakpoints.down('md')]: {
+        fontSize: '31px',
+        lineHeight: '38px'
+      },
+    },
+    h4: {
+      fontSize: '36px',
+      lineHeight: '40px',
+      fontWeight: 500,
+      [breakpoints.down('md')]: {
+        fontSize: '26px',
+        lineHeight: '30px'
+      },
+
+    },
+    body1: {
+      fontSize: '24px',
+      lineHeight: '30px',
+      fontWeight: 400,
+      [breakpoints.down('md')]: {
+        fontSize: '18px',
+        lineHeight: '22px'
+      },
+    },
+  },
+});
+
+// import { createTheme } from '@material-ui/core/styles';
+// import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
+// const breakpoints = createBreakpoints({});
+// const theme = createTheme({
 //   props: {
 //     MuiCard: {
 //       elevation: 3
@@ -19,148 +149,57 @@ const palette = {
 //   },
 //   palette: {
 //     primary: {
-//       main: '#00203FFF',
-//       light: '#B1DED3',
-//       dark: '#00765A',
+//       main: '#242829',
 //     },
 //     secondary: {
-//       main: '#ADEFD1FF',
+//       main: '#FFF',
 //     },
 //     error: {
 //       main: '#FF1F1F',
 //     },
 //     success: {
 //       main: '#52C41A'
+//     },
+//     info: {
+//       main: '#00249C',
+//     },
+//     grey: {
+//       900: '#000'
 //     }
 //   },
 //   typography: {
 //     allVariants: {
-//       fontFamily: `'Rubik', sans-serif`,
-//       fontWeight: 400,
+//       fontFamily: `"Roboto", sans-serif`,
 //     },
 //     h2: {
-//       fontSize: '37.8209px',
-//       lineHeight: '43px',
+//       fontSize: '41px',
+//       lineHeight: '48px',
+//       fontWeight: 700,
+//       [breakpoints.down('md')]: {
+//         fontSize: '31px',
+//         lineHeight: '38px'
+//       },
 //     },
 //     h4: {
-//       fontSize: '32.4179px',
-//       lineHeight: '37px',
+//       fontSize: '36px',
+//       lineHeight: '40px',
+//       fontWeight: 500,
+//       [breakpoints.down('md')]: {
+//         fontSize: '26px',
+//         lineHeight: '30px'
+//       },
 
 //     },
 //     body1: {
-//       fontSize: '21.6119px',
-//       lineHeight: '25px',
+//       fontSize: '24px',
+//       lineHeight: '30px',
+//       fontWeight: 400,
+//       [breakpoints.down('md')]: {
+//         fontSize: '18px',
+//         lineHeight: '22px'
+//       },
 //     },
 //   },
 // });
 
-export const getDesignTokens = (mode) => ({
-  palette: {
-    mode,
-    ...(mode === 'light'
-      ? {
-          primary: {
-            main: palette.light.primary.main,
-            light: palette.light.primary.light,
-            dark: palette.light.primary.dark,
-          },
-
-          divider: amber[200],
-          text: {
-            primary: grey[900],
-            secondary: grey[800],
-          },
-        }
-      : {
-        primary: deepOrange,
-        divider: deepOrange[700],
-        background: {
-          default: deepOrange[900],
-          paper: deepOrange[900],
-        },
-        text: {
-          primary: '#fff',
-          secondary: grey[500],
-        },
-    }),
-  },
-});
-
-export const getThemedComponents = (mode) => ({
-  components: {
-    ...(mode === 'light'
-      ? {
-          MuiAppBar: {
-            styleOverrides: {
-              colorPrimary: {
-                backgroundColor: grey[800],
-              },
-            },
-          },
-          MuiLink: {
-            variant: 'h3',
-          },
-          MuiButton: {
-            styleOverrides: {
-              root: {
-                borderRadius: '4px',
-                color: common.white,
-                borderWidth: 2,
-                '&:hover': {
-                  borderWidth: 2,
-                },
-              },
-            },
-            variants: [
-              {
-                props: { variant: 'contained' },
-                style: {
-                  
-                },
-              },
-              {
-                props: { variant: 'outlined' },
-                style: {
-                  color: palette.light.primary.main,
-                },
-              },
-              {
-                props: { variant: 'primary', color: 'primary' },
-                style: {
-                  border: '4px dashed blue',
-                },
-              },
-            ],
-          },
-          MuiList: {
-            styleOverrides: {
-              root: {},
-            },
-          },
-          MuiMenuItem: {
-            styleOverrides: {
-              root: {
-                color: common.white,
-                alignItems: 'stretch',
-              },
-            },
-          },
-          MuiAccordion: {
-            styleOverrides: {
-              root: {
-                color: common.white,
-              },
-            },
-          },
-        }
-      : {
-          MuiAppBar: {
-            styleOverrides: {
-              colorPrimary: {
-                backgroundColor: blue[800],
-              },
-            },
-          },
-        }),
-  },
-});
+// export default theme;

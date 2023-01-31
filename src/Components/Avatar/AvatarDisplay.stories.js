@@ -7,20 +7,18 @@ export default {
     title: 'Avatar',
     component: 'AvatarDisplay',
     argTypes: {
-      // size: {
-      //     options: ['smallAvatar', 'defaultAvatar', 'largeAvatar'],
-      //     type: { name: 'string', required: true },
-      //     control: {
-      //       type: 'inline-radio'
-      //     }
-      //   },
+      size: {
+          name: 'Size',
+          type: { name: 'string', required: true },
+          defaultValue: '40px'
+        },
         value: {
             name: 'value',
             type: { name: 'string', required: true },
             defaultValue: 'H'
         },
         variant: {
-          options: ['rounded', 'square', 'contained'],
+          options: ['rounded', 'square', 'contained', 'circular'],
           control: {
             type: 'inline-radio'
           }

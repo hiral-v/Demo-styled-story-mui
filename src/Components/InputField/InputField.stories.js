@@ -26,6 +26,12 @@ export default {
           type: 'inline-radio'
         }
       },
+      multiline: {
+        options: ['true'],
+        control: {
+          type: 'inline-radio'
+        }
+      },
       size: {
         options: ['medium', 'small'],
         control: {

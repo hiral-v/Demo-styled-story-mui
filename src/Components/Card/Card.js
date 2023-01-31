@@ -10,7 +10,7 @@ import CardImage from '../../assets/images/card.jpg';
 import SkeletonLoader from '../SkeletonLoader/SkeletonLoader';
 
 const ImgMediaCard = (props) => {
-  const { loading = false } = props;
+  const { loading = false,  } = props;
   return (
     <Card sx={{ maxWidth: 345 }}>
       {loading ? (
@@ -27,9 +27,7 @@ const ImgMediaCard = (props) => {
         {loading ? (
           <SkeletonLoader animation="wave" variant="text" width={200} height={20} />
         ) : (
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
+          <Typography gutterBottom variant="h5" component="div">Lizard</Typography>
         )}
         {loading ? (
           <>

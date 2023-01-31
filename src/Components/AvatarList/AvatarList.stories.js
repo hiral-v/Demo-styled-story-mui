@@ -12,6 +12,11 @@ export default {
             type: { name: 'string', required: true },
             defaultValue: 'H'
         },
+        width: {
+            name: 'Width',
+            type: { name: 'string', required: true },
+            defaultValue: '250px'
+        },
         max: {
             name: 'max',
             type: { name: 'string', required: true },

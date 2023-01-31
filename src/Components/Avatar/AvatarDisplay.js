@@ -5,14 +5,13 @@ import SkeletonLoader from '../SkeletonLoader/SkeletonLoader';
 interface Props extends AvatarProps {
   variant?: string;
 }
-const AvatarDisplay = ({ loading = false, variant, value, src, size, stringAvatar, ...rest }: Props) => {
- 
+const AvatarDisplay = ({ loading = false, animation, variant, value, src, size, stringAvatar, ...rest }: Props) => {
   return (
     <>
       {loading ? (
-        <SkeletonLoader animation="wave" variant={variant} height={40} width={40} />
+        <SkeletonLoader animation={animation} variant={variant} height={size} width={size} />
       ) : (
-        <Avatar variant={variant} size={size} src={src}>{value}</Avatar>
+        <Avatar variant={variant} sx={{ width: size, height: size }} src={src}>{value}</Avatar>
       )}
     </>
   )

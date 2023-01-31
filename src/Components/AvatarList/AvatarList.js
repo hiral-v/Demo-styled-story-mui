@@ -7,9 +7,9 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 
 
 
-const AvatarList = ({value, max, variant, total, loading, ...rest }: props) => {
+const AvatarList = ({value, max, variant, total, loading, width, ...rest }: props) => {
   return (
-    <AvatarGroup max={max} total={total} width={250}>
+    <AvatarGroup max={max} total={total} width={width}>
         <AvatarDisplay variant={variant} alt="Remy Sharp" src={AvatarImg} loading={loading}></AvatarDisplay>
         <AvatarDisplay variant={variant} value={value} loading={loading}></AvatarDisplay>
         <AvatarDisplay variant={variant} loading={loading}><AssignmentIcon /></AvatarDisplay>
