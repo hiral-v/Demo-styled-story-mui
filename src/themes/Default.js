@@ -1,6 +1,8 @@
 
 import {  common } from '@mui/material/colors';
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
+import darkScrollbar from "@mui/material/darkScrollbar";
+
 
 const breakpoints = createBreakpoints({});
 
@@ -31,8 +33,8 @@ export const getThemedComponents = (mode) => ({
     colorPalette
   },
   components: {
-    ...(mode === 'light'
-      ? {
+    ...(mode === 'light' ?
+      {
         MuiButton: {
           styleOverrides: {
             root: {
@@ -97,12 +99,17 @@ export const getThemedComponents = (mode) => ({
           styleOverrides: {
             body: {
               backgroundColor: '#121212',
-            }
-          }
-        }
-      }),
+              ...darkScrollbar(),
+              color: "darkred",
+            }    
+          }  
+        },
+        
+        
+      }
+    ),
+    
   },
-  
   typography: {
     allVariants: {
       fontFamily: `"Roboto", sans-serif`,
@@ -137,69 +144,3 @@ export const getThemedComponents = (mode) => ({
     },
   },
 });
-
-// import { createTheme } from '@material-ui/core/styles';
-// import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
-// const breakpoints = createBreakpoints({});
-// const theme = createTheme({
-//   props: {
-//     MuiCard: {
-//       elevation: 3
-//     }
-//   },
-//   palette: {
-//     primary: {
-//       main: '#242829',
-//     },
-//     secondary: {
-//       main: '#FFF',
-//     },
-//     error: {
-//       main: '#FF1F1F',
-//     },
-//     success: {
-//       main: '#52C41A'
-//     },
-//     info: {
-//       main: '#00249C',
-//     },
-//     grey: {
-//       900: '#000'
-//     }
-//   },
-//   typography: {
-//     allVariants: {
-//       fontFamily: `"Roboto", sans-serif`,
-//     },
-//     h2: {
-//       fontSize: '41px',
-//       lineHeight: '48px',
-//       fontWeight: 700,
-//       [breakpoints.down('md')]: {
-//         fontSize: '31px',
-//         lineHeight: '38px'
-//       },
-//     },
-//     h4: {
-//       fontSize: '36px',
-//       lineHeight: '40px',
-//       fontWeight: 500,
-//       [breakpoints.down('md')]: {
-//         fontSize: '26px',
-//         lineHeight: '30px'
-//       },
-
-//     },
-//     body1: {
-//       fontSize: '24px',
-//       lineHeight: '30px',
-//       fontWeight: 400,
-//       [breakpoints.down('md')]: {
-//         fontSize: '18px',
-//         lineHeight: '22px'
-//       },
-//     },
-//   },
-// });
-
-// export default theme;

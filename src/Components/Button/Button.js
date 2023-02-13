@@ -2,9 +2,8 @@ import React from 'react';
 import Button, { ButtonProps } from '@mui/material/Button';
 import { styled } from '@mui/system';
 
-
 const MuiButton = styled(Button)({
-  padding: '8px 22px',
+  padding: '8px 22px',  
 })
 
 interface Props extends ButtonProps {

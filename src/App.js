@@ -11,6 +11,8 @@ import { deepmerge } from '@mui/utils';
 import { getThemedComponents } from './themes/Default';
 import Home from './Pages/Home';
 import GlobalStyle from './GlobalStyles';
+import CssBaseline from "@mui/material/CssBaseline";
+
 
 export default function App() {
   const [mode, setMode] = React.useState('light');
@@ -33,6 +35,7 @@ export default function App() {
     <ColorModeContext.Provider value={colorMode}>
       <GlobalStyle/>
       <ThemeProvider theme={theme}>
+      <CssBaseline/>
         <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
           {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
         </IconButton>
